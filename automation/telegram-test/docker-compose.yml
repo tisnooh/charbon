@@ -1,0 +1,10 @@
+services:
+  telegram-test:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - charbon_test_data:/data
+    # One instance only. Telegram polling and SQLite must not be scaled horizontally.
+volumes:
+  charbon_test_data:
